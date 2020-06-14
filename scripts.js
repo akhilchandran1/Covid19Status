@@ -21,21 +21,28 @@ request.onload = function () {
 
  function renderHTML(data){
 
+  // creating variables
   var covidInfo ="";
   var totalGDeath = "";
   var totalGConfirmed = "";
   var totalGRecovered = "";
 
-  for (i = 0; i < data.Countries.length; i++){
+  // sorting based on Total confirmed cases
+  var covidGlobalInfo = data.Countries;
+  covidGlobalInfo.sort(function(obj1, obj2) {
+    return obj2.TotalConfirmed - obj1.TotalConfirmed;
+ });
+
+ // for loop to get each country data
+  for (i = 0; i < covidGlobalInfo.length; i++){
     covidInfo += "<p>" 
-    +data.Countries[i].TotalConfirmed +"  "
-    + data.Countries[i].Country
+    +covidGlobalInfo[i].TotalConfirmed +"  "
+    + covidGlobalInfo[i].Country
     
     + "</p><hr>";
-   // console.log(data.Countries[i].Country);
   }
 
-
+// getting global data
   totalGConfirmed += "<p>"
   +"<strong> Globally Total Confirmed </strong><br>"
   +data.Global.TotalConfirmed
@@ -54,6 +61,7 @@ request.onload = function () {
   +"<br><hr><br><strong> Globally New Deaths </strong><br>"
   +data.Global.NewDeaths+"</p>";
 
+  // adding to HTML page
   totalGloballyConfirmed.insertAdjacentHTML('beforeend',totalGConfirmed)
   totalGloballyRecovered.insertAdjacentHTML('beforeend',totalGRecovered)
   totalGlobalDeath.insertAdjacentHTML('beforeend',totalGDeath)

@@ -1,0 +1,65 @@
+#root {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    margin: 1rem;
+    border: 1px solid gray;
+  }
+
+  .head { 
+    grid-area: header;
+    text-align: center;
+  }
+  .totalGlobaleyConfermed {
+    grid-area: totalGlobaleyConfermed;
+    text-align: center;
+  }
+  .map { grid-area: map; }
+  .totalGlobalDeath {
+    grid-area: totalGlobalDeath;
+    text-align: center;
+  }
+  .covidUpdate { 
+    grid-area: covidUpdate;
+    text-align: left;
+  }
+ 
+
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+    'header header header header header header header'
+    'totalGlobaleyConfermed map map map map map totalGlobalDeath'
+    'totalGlobaleyConfermed map map map map map totalGlobalDeath'
+    'covidUpdate map map map map map totalGlobalDeath'
+    ;
+    grid-gap: 5px;
+    background-color: #cae3f8;
+    padding: 10px;
+  }
+
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0px 15px;
+    font-size: 20px;
+  }
+
+
+  @media screen and (min-width: 600px) {
+    .card {
+      flex: 1 1 calc(50% - 2rem);
+    }
+  }
+  
+  @media screen and (min-width: 900px) {
+    .card {
+      flex: 1 1 calc(33% - 2rem);
+    }
+  }

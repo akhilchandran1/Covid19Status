@@ -113,7 +113,36 @@
   text-align: center;
 }
 .footer {
-  padding-top: 10px;
+  font-size: medium;
+}
+
+.heartSymbel {
+  color: red;
+  font-size: 16px;
+  padding-left: 5px;
+  padding-right: 5px;
+  animation-duration: 4s;
+}
+
+
+@keyframes heart {
+  0% {
+    color: red;
+  }
+  25% {
+    color: yellow;
+  }
+  50% {
+    color: rgb(255, 0, 200);
+  }
+  100% {
+    color: greenyellow;
+  }
+}
+
+.heartSymbel:hover {
+  font-size: 25px;
+  animation-name: heart;
 }
 
 /*_______________________________________________*/

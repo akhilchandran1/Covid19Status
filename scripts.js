@@ -3,6 +3,7 @@ var covidUpdates = document.getElementById("covid-updates");
 var totalGlobalDeath = document.getElementById("total-global-death");
 var totalGloballyConfirmed = document.getElementById("total-globally-confirmed")
 var totalGloballyRecovered = document.getElementById("total-globally-recovered")
+var lastUpdate =document.getElementById("last-update")
 var request = new XMLHttpRequest();
 
 // Open a new connection, using the GET request on the URL endpoint
@@ -26,6 +27,7 @@ request.onload = function () {
   var totalGDeath = "";
   var totalGConfirmed = "";
   var totalGRecovered = "";
+  var lastUpdateDate ="";
 
   // sorting based on Total confirmed cases
   var covidGlobalInfo = data.Countries;
@@ -36,36 +38,40 @@ request.onload = function () {
  // for loop to get each country data
   for (i = 0; i < covidGlobalInfo.length; i++){
     covidInfo += "<p>" 
-    +covidGlobalInfo[i].TotalConfirmed +"  "
-    + covidGlobalInfo[i].Country
-    
+    +"<strong class="+"confermedCase"+">"+covidGlobalInfo[i].TotalConfirmed +"</strong>"+" <span></span> "
+    +"<span class="+"confermedHead"+">"+ covidGlobalInfo[i].Country +"</span>"
     + "</p><hr>";
   }
 
 // getting global data
   totalGConfirmed += "<p>"
-  +"<strong> Globally Total Confirmed </strong><br>"
-  +data.Global.TotalConfirmed
-  +"<br><hr><br><strong> Globally New Confirmed </strong><br>"
-  +data.Global.NewConfirmed+"<p>";
+  +"<span class="+"confermedHead"+"> Globally Total Confirmed </span><br>"
+  +"<strong class="+"confermedCaseGlobally"+">"+ data.Global.TotalConfirmed +"</strong>"
+  +"<br><hr><br><span class="+"confermedHead"+"> Globally New Confirmed </span><br>"
+  +"<strong class="+"confermedCaseGlobally"+">"+ data.Global.NewConfirmed +"</strong>"+"<p>";
 
   totalGRecovered += "<p>"
-  +"<strong> Globally Recovered </strong><br>"
-  +data.Global.TotalRecovered
-  +"<br><hr><br><strong> Globally New Recovered </strong><br>"
-  +data.Global.NewRecovered+"<p>";
+  +"<span class="+"recoveredHead"+"> Globally Total Recovered </span><br>"
+  + "<strong class="+"recoveredCase"+">"+ data.Global.TotalRecovered +"</strong>"
+  +"<br><hr><br><span class="+"recoveredHead"+"> Globally New Recovered </span><br>"
+  + "<strong class="+"recoveredCase"+">"+ data.Global.NewRecovered +"</strong>"+"<p>";
 
   totalGDeath += "<p>"
-  +"<strong>Total Global Death </strong><br>"
-  + data.Global.TotalDeaths
-  +"<br><hr><br><strong> Globally New Deaths </strong><br>"
-  +data.Global.NewDeaths+"</p>";
+  +"<span class="+"deathHead"+">Total Global Total Death </span><br>"
+  + "<strong class="+"confermedDeath"+">"+ data.Global.TotalDeaths+"</strong>"
+  +"<br><hr><br><span class="+"deathHead"+"> Globally New Deaths </span><br>"
+  + "<strong class="+"confermedDeath"+">"+data.Global.NewDeaths+"</strong>"+"</p>";
+
+  lastUpdateDate += "<p class="+"lastUpdate"+">"
+  +"Last Update: "
+  +data.Date+"</p>";
 
   // adding to HTML page
   totalGloballyConfirmed.insertAdjacentHTML('beforeend',totalGConfirmed)
   totalGloballyRecovered.insertAdjacentHTML('beforeend',totalGRecovered)
   totalGlobalDeath.insertAdjacentHTML('beforeend',totalGDeath)
   covidUpdates.insertAdjacentHTML('beforeend',covidInfo)
+  lastUpdate.insertAdjacentHTML('beforeend',lastUpdateDate)
 
 }
 

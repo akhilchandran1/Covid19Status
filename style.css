@@ -10,7 +10,7 @@
   
   .card {
     margin: 1rem;
-    border: 1px solid gray;
+    border: 1px solid rgb(3, 92, 133);
   }
 /*______________________________________________*/
 
@@ -18,16 +18,19 @@
   .head { 
     grid-area: header;
     text-align: center;
+    color: rgb(230, 244, 253);
   }
 
   .totalGloballyConfirmed {
     grid-area: totalGloballyConfirmed;
     text-align: center;
+    line-height: 40px;
   }
 
   .totalGloballyRecovered {
     grid-area: totalGloballyRecovered;
     text-align: center;
+    line-height: 40px;
   }
 
   .map { grid-area: map; }
@@ -35,6 +38,7 @@
   .totalGlobalDeath {
     grid-area: totalGlobalDeath;
     text-align: center;
+    line-height: 40px;
   }
 
   .covidUpdate { 
@@ -42,7 +46,18 @@
     text-align: left;
     overflow: auto;
   }
+
+  .lastUpdate {
+    grid-area: lastUpdate;
+  }
+
+  .footer {
+    grid-area: footer;
+  }
  
+  .map img {
+    max-width: 900px;
+  }
 
   .grid-container {
     display: grid;
@@ -51,19 +66,57 @@
     'covidUpdate map map map map map totalGloballyConfirmed'
     'covidUpdate map map map map map totalGloballyRecovered'
     'covidUpdate map map map map map totalGlobalDeath'
+    'lastUpdate lastUpdate footer footer footer footer totalGlobalDeath'
     ;
     grid-gap: 5px;
-    background-color: #cae3f8;
+    background-color:  rgb(0, 25, 36);
     padding: 10px;
     height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1.5px;
+    
   }
 
   .grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgb(3, 48, 107);
     padding: 0px 15px;
     font-size: 20px;
   }
 /*________________________________________________*/
+
+/* styles in java script file */
+
+.confermedCase, .confermedCaseGlobally {
+  color: rgb(245, 27, 27);
+}
+
+.confermedDeath, .confermedCaseGlobally {
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+.confermedDeath {
+  color: rgb(248, 98, 98);
+}
+
+.recoveredCase {
+  color: rgb(104, 245, 115);
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+
+.confermedHead, .recoveredHead, .deathHead, .lastUpdate, .footer {
+  color: rgb(223, 234, 250);
+  
+}
+.lastUpdate, .footer {
+  text-align: center;
+}
+.footer {
+  padding-top: 10px;
+}
+
+/*_______________________________________________*/
 
   @media screen and (min-width: 600px) {
     .card {

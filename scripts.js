@@ -35,12 +35,18 @@ request.onload = function () {
     return obj2.TotalConfirmed - obj1.TotalConfirmed;
  });
 
+
+
  // for loop to get each country data
   for (i = 0; i < covidGlobalInfo.length; i++){
     covidInfo += "<p>" 
     +"<strong class="+"confermedCase"+">"+covidGlobalInfo[i].TotalConfirmed +"</strong>"+" <span></span> "
     +"<span class="+"confermedHead"+">"+ covidGlobalInfo[i].Country +"</span>"
     + "</p><hr>";
+    if(covidGlobalInfo[i].Country.includes("India")){
+      var a = covidGlobalInfo[i].valueOf();
+      console.log(a)
+    }
   }
 
 // getting global data

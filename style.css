@@ -70,11 +70,14 @@
     ;
     grid-gap: 5px;
     background-color:  rgb(0, 25, 36);
-    padding: 10px;
+    padding: 0px;
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 1.5px;
-    
+  }
+
+  body {
+    background-color:  rgb(0, 25, 36);
   }
 
   .grid-container > div {

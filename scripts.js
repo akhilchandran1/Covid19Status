@@ -42,11 +42,22 @@ request.onload = function () {
     covidInfo += "<p>" 
     +"<strong class="+"confermedCase"+">"+covidGlobalInfo[i].TotalConfirmed +"</strong>"+" <span></span> "
     +"<span class="+"confermedHead"+">"+ covidGlobalInfo[i].Country +"</span>"
-    + "</p><hr>";
+    +"</p>"
+    +"<p class="+"countryDeathAndRecovered"+">"
+    +"<span class="+"totalDeath"+">Total Death: </span><span class="+"totalandNewDeath"+">"+covidGlobalInfo[i].TotalConfirmed+"</span> | "
+    +"<span class="+"totalRecovered"+">Total Recovered: </span><span class="+"totalandNewRecovered"+">"+covidGlobalInfo[i].TotalRecovered+"</span> "
+    +"</p>"
+    +"<p class="+"countryDeathAndRecovered"+">"
+    +"<span class="+"NewDeath"+">New Death: </span><span class="+"totalandNewDeath"+">"+covidGlobalInfo[i].NewDeaths+"</span> | "
+    +"<span class="+"NewRecovered"+">New Recovered: </span><span class="+"totalandNewRecovered"+">"+covidGlobalInfo[i].NewRecovered+"</span>"
+    +"</p>"
+    +"<hr>";
+    /*
     if(covidGlobalInfo[i].Country.includes("India")){
       var a = covidGlobalInfo[i].valueOf();
       console.log(a)
     }
+    */
   }
 
 // getting global data
@@ -63,7 +74,7 @@ request.onload = function () {
   + "<strong class="+"recoveredCase"+">"+ data.Global.NewRecovered +"</strong>"+"<p>";
 
   totalGDeath += "<p>"
-  +"<span class="+"deathHead"+">Total Global Total Death </span><br>"
+  +"<span class="+"deathHead"+">Total Global Death </span><br>"
   + "<strong class="+"confermedDeath"+">"+ data.Global.TotalDeaths+"</strong>"
   +"<br><hr><br><span class="+"deathHead"+"> Globally New Deaths </span><br>"
   + "<strong class="+"confermedDeath"+">"+data.Global.NewDeaths+"</strong>"+"</p>";
@@ -71,6 +82,103 @@ request.onload = function () {
   lastUpdateDate += "<p class="+"lastUpdate"+">"
   +"Last Update: "
   +data.Date+"</p>";
+// __________________________________________________________________________________
+
+createGlobalLineChart();
+createGlobalPieChart();
+createGlobalbarChart();
+// Line Chart
+function createGlobalLineChart(){
+const ctx = document.getElementById('lineChart').getContext('2d');
+const xlabels = ['Total Confirmed','New Confirmed','Total Recovered','New Recovered','Total Death','New Deaths'];
+const yCases = [data.Global.TotalConfirmed, data.Global.NewConfirmed, data.Global.TotalRecovered, data.Global.NewRecovered, data.Global.TotalDeaths, data.Global.NewDeaths];
+const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: xlabels,
+        datasets: [{
+            label: '# covid 19 chart',
+           // fill: false,
+            data: yCases,
+            backgroundColor: [
+                'rgba(252, 73, 3)',
+                'rgba(252, 73, 3)',
+                'rgba(28, 252, 3)',
+                'rgba(28, 252, 3)',
+                'rgba(252, 3, 3)',
+                'rgba(252, 3, 3)'
+              ],
+            borderColor: [
+                'rgba(252, 3, 3)',
+                'rgba(252, 3, 3)',
+                'rgba(11, 112, 0)',
+                'rgba(11, 112, 0)',
+                'rgba(135, 3, 3)',
+                'rgba(135, 3, 3)'
+              ],
+            borderWidth: 1
+        }]
+    }
+});
+}
+
+// Pie Chart
+function createGlobalPieChart(){
+  const ctx = document.getElementById('pieChart').getContext('2d');
+  const xlabels = ['Total Confirmed','New Confirmed','Total Recovered','New Recovered','Total Death','New Deaths'];
+  const yCases = [data.Global.TotalConfirmed, data.Global.NewConfirmed, data.Global.TotalRecovered, data.Global.NewRecovered, data.Global.TotalDeaths, data.Global.NewDeaths];
+  const chart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+          labels: xlabels,
+          datasets: [{
+              label: '# covid 19 chart',
+             // fill: false,
+              data: yCases,
+              backgroundColor: [
+                  'rgba(252, 73, 3)',
+                  'rgba(204, 79, 2)',
+                  'rgba(28, 252, 3)',
+                  'rgba(3, 145, 5)',
+                  'rgba(252, 3, 3)',
+                  'rgba(145, 3, 24)'
+                ],
+              borderColor: 'rgba(255, 255, 255)',
+              borderWidth: 1
+          }]
+      }
+  });
+  }
+
+// Bar Chart
+function createGlobalbarChart(){
+  const ctx = document.getElementById('barChart').getContext('2d');
+  const xlabels = ['Total Confirmed','New Confirmed','Total Recovered','New Recovered','Total Death','New Deaths'];
+  const yCases = [data.Global.TotalConfirmed, data.Global.NewConfirmed, data.Global.TotalRecovered, data.Global.NewRecovered, data.Global.TotalDeaths, data.Global.NewDeaths];
+  const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: xlabels,
+          datasets: [{
+              label: '# covid 19 chart',
+             // fill: false,
+              data: yCases,
+              backgroundColor: [
+                  'rgba(252, 73, 3)',
+                  'rgba(204, 79, 2)',
+                  'rgba(28, 252, 3)',
+                  'rgba(3, 145, 5)',
+                  'rgba(252, 3, 3)',
+                  'rgba(145, 3, 24)'
+                ],
+              borderColor: 'rgba(255, 255, 255)',
+              borderWidth: 1
+          }]
+      }
+  });
+  }
+// __________________________________________________________________________________
+
 
   // adding to HTML page
   totalGloballyConfirmed.insertAdjacentHTML('beforeend',totalGConfirmed)

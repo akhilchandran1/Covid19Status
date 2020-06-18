@@ -4,27 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Covid 19 Info</title>
+    <title>Covid-19 Info</title>
 
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
     <link href="./style.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   </head>
 
   <body>
+
     <div class="grid-container">
-     <div class="head"><h1>Covid 19</h1></div>
+     <div class="head"><h1>Covid - 19</h1></div>
      <div class="totalGloballyConfirmed" id="total-globally-confirmed"></div>
      <div class="totalGloballyRecovered" id="total-globally-recovered"></div>
-     <div class="map"><img src="https://pbs.twimg.com/profile_banners/14499829/1582794472/1500x500"><br>
-     <img src="https://pbs.twimg.com/media/EafN60XWkAQChWA?format=jpg&name=medium"></div>
+     
      <div class="totalGlobalDeath" id="total-global-death"></div>
      <div class="covidUpdate" id="covid-updates"></div>
      <div class="lastUpdate" id="last-update"></div>
-     <div class="footer"> <br>
-      <small>&copy; 2020 made with<span class="heartSymbel">&#10084; </span>by
-      Akhil Chandran
-    </small></div>
+     <div class="lineChart"><canvas id="lineChart"></canvas></div>
+     <div class="pieChart"><canvas id="pieChart"></canvas></div>
+     <div class="barChart"><canvas id="barChart"></canvas></div>
   </div>
     <script src="./scripts.js"></script>
   </body>
+  <footer>
+    <div class="footer">
+      <small>&copy; 2020 made with<span class="heartSymbel">&#10084; </span>by <a href="https://www.akhilchandran-dev.com/">Akhil Chandran</a>
+    </small></div>
+  </footer>
 </html>

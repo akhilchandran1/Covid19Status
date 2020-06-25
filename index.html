@@ -6,15 +6,33 @@
 
     <title>Covid-19 Info</title>
 
+    <link
+    rel="shortcut icon"
+    type="image/png"
+    href="./image/fevicon/COVID-19 icon.png"
+  />
+
     <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet" />
-    <link href="./style.css" rel="stylesheet" />
+    <link href="./style/style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   </head>
 
   <body>
 
     <div class="grid-container">
-     <div class="head"><h1>Covid - 19</h1></div>
+     <div class="head">
+       <!--
+      <svg>
+        <path class="paths" d="M10 70 L 70 70, 90 30, 110 90, 120 50, 130 70, 190 70" stroke="Red" fill="transparent"></path>
+      </svg> 
+      -->
+
+        <h1 class="headder">Covid - 19  
+          <img class="rotate" src="./image/covid/covid-virus.png" alt="milind kamthe"/>
+        </h1>
+
+      </div>
+   
      <div class="totalGloballyConfirmed" id="total-globally-confirmed"></div>
      <div class="totalGloballyRecovered" id="total-globally-recovered"></div>
      
@@ -24,12 +42,11 @@
      <div class="lineChart"><canvas id="lineChart"></canvas></div>
      <div class="pieChart"><canvas id="pieChart"></canvas></div>
      <div class="barChart"><canvas id="barChart"></canvas></div>
+      <div class="footer">
+        <small>&copy; 2020 made with<span class="heartSymbel"><img src="./image/footer/heart.png" alt="heaert"></span>by <a href="https://www.akhilchandran-dev.com/">Akhil Chandran</a>
+      </small></div>
   </div>
-    <script src="./scripts.js"></script>
+    <script src="./scripts/scripts.js"></script>
   </body>
-  <footer>
-    <div class="footer">
-      <small>&copy; 2020 made with<span class="heartSymbel">&#10084; </span>by <a href="https://www.akhilchandran-dev.com/">Akhil Chandran</a>
-    </small></div>
-  </footer>
+ 
 </html>

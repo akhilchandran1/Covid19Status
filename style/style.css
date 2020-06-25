@@ -1,3 +1,15 @@
+:root {
+  /* making root colors */
+  --fontColourWhite: #fff;
+  --mainHead:#013750;
+  --red: #ff0000;
+  --green: #016b1b;
+  --orange:#d16602;
+  --yellow: #ffee00;
+  --blue: #0059ff;
+  --white: #ffffff;
+}
+
 #root {
     max-width: 1200px;
     margin: 0 auto;
@@ -7,21 +19,18 @@
     display: flex;
     flex-wrap: wrap;
   }
-  
-  .card {
-    margin: 1rem;
-    border: 1px solid rgb(3, 92, 133);
-  }
+.headder {
+  color: rgb(0, 25, 36);
+}
   .footer {
-    background-color: rgb(4, 48, 68);
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 1.5px;
-    color: white;
+    color: rgb(1, 33, 59);
   }
   .footer a{
     text-decoration: none;
-    color: white;
+    color: rgb(1, 33, 59);
   }
 /*______________________________________________*/
 
@@ -71,7 +80,9 @@
   .lastUpdate {
     grid-area: lastUpdate;
   }
-
+.footer {
+  grid-area: footer;
+}
  
   .lineChart{
     max-width: 1000px;
@@ -95,21 +106,20 @@
     'covidUpdate lineChart lineChart lineChart lineChart lineChart totalGloballyRecovered'
     'covidUpdate pieChart pieChart pieChart barChart barChart totalGlobalDeath'
     'lastUpdate pieChart pieChart pieChart barChart barChart totalGlobalDeath'
+    'footer footer footer footer footer footer footer'
     ;
     grid-gap: 5px;
-    background-color:  rgb(0, 25, 36);
     padding: 0px;
     height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 1.5px;
   }
 
-  body {
-    background-color:  rgb(0, 25, 36);
+  body, .grid-container {
+    background-color:  rgb(232, 250, 255);
   }
 
   .grid-container > div {
-    background-color: rgb(3, 48, 107);
     padding: 0px 15px;
     font-size: 20px;
   }
@@ -117,8 +127,8 @@
 
 /* styles in java script file */
 
-.confermedCase, .confermedCaseGlobally {
-  color: rgb(245, 27, 27);
+.confermedCase, .confermedCaseGlobally, .NewConfirmedNumber {
+  color: var(--red);
 }
 
 .confermedDeath, .confermedCaseGlobally {
@@ -127,21 +137,21 @@
 }
 
 .confermedDeath {
-  color: rgb(248, 98, 98);
+  color: var(--red);
 }
 
 .recoveredCase {
-  color: rgb(104, 245, 115);
+  color: var(--green);
   font-size: 30px;
   letter-spacing: 3px;
 }
 .countryDeathAndRecovered {
   font-size: 10px;
-  color: white;
+  color: rgb(68, 67, 67);
 }
 
 .confermedHead, .recoveredHead, .deathHead, .lastUpdate{
-  color: rgb(223, 234, 250);
+  color: rgb(79, 79, 80);
   
 }
 .lastUpdate, .footer {
@@ -160,14 +170,60 @@
 }
 
 .totalandNewDeath {
-  color: rgb(255, 94, 0);
+  color: var(--orange);
 }
 
 .totalandNewRecovered {
-  color: rgb(21, 255, 0);
+  color: var(--green);
 }
 
+/*______________________________*/
+/*
+svg{
+  width:200px;
+  height:120px;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+}
+.paths {
+  stroke-dasharray: 290;
+  stroke-dashoffset: 130;
+  animation: dash 1.5s 0s forwards infinite;
+  stroke-width:7px;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 290;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+*/
 
+.rotate {
+  animation:mk22_rotate 1s linear infinite;
+  max-height: 50px;
+}
+@keyframes mk22_rotate{
+    from{transform:rotate(270deg)}
+    to{transform:rotate(360deg)}
+}
+@keyframes mk22_move{
+    from{transform:translateX(-100px)}
+    to{transform:translateX(1200px)}
+}
+.image_set{
+  animation:mk22_move 20s linear infinite;
+  border-radius:50%;
+  margin-top:40px;
+}
+
+/*_______________________________*/
+/*
 @keyframes heart {
   0% {
     color: red;
@@ -187,17 +243,67 @@
   font-size: 25px;
   animation-name: heart;
 }
+*/
+ .heartSymbel img{
+  animation: 2s ease 0s normal none infinite running animateHeartBeat;
+  overflow: inherit;
+  position: relative;
+  display:inline-block;
+  max-height:25px;
+ }
+
+
+@keyframes animateHeartBeat {
+  0% {
+      transform: scale(1);
+  }
+  5% {
+      transform: scale(1.4);
+  }
+  10% {
+      transform: scale(1.3);
+  }
+  15% {
+      transform: scale(1.8);
+  }
+  50% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(1);
+  }
+  }
+  @keyframes animateHeartBeat {
+  0% {
+      transform: scale(1);
+  }
+  5% {
+      transform: scale(1.4);
+  }
+  10% {
+      transform: scale(1.3);
+  }
+  15% {
+      transform: scale(1.8);
+  }
+  50% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(1);
+  }
+  }
 
 /*_______________________________________________*/
 
   @media screen and (min-width: 600px) {
-    .card {
+    .grid-container {
       flex: 1 1 calc(50% - 2rem);
     }
   }
   
   @media screen and (min-width: 900px) {
-    .card {
+    .grid-container {
       flex: 1 1 calc(33% - 2rem);
     }
   }

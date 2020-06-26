@@ -68,13 +68,13 @@ request.onload = function () {
   +"<span class="+"confermedHead"+"> Globally Total Confirmed </span><br>"
   +"<strong class="+"confermedCaseGlobally"+">"+ data.Global.TotalConfirmed +"</strong>"
   +"<br><hr><br><span class="+"confermedHead"+"> Globally New Confirmed </span><br>"
-  +"<strong class="+"confermedCaseGlobally"+">"+ data.Global.NewConfirmed +"</strong>"+"<p>";
+  +"<strong class="+"confermedCaseGlobally"+">"+ data.Global.NewConfirmed +"</strong>"+"<p><hr>";
 
   totalGRecovered += "<p>"
   +"<span class="+"recoveredHead"+"> Globally Total Recovered </span><br>"
   + "<strong class="+"recoveredCase"+">"+ data.Global.TotalRecovered +"</strong>"
   +"<br><hr><br><span class="+"recoveredHead"+"> Globally New Recovered </span><br>"
-  + "<strong class="+"recoveredCase"+">"+ data.Global.NewRecovered +"</strong>"+"<p>";
+  + "<strong class="+"recoveredCase"+">"+ data.Global.NewRecovered +"</strong>"+"<p><hr>";
 
   totalGDeath += "<p>"
   +"<span class="+"deathHead"+">Total Global Death </span><br>"
@@ -182,13 +182,16 @@ function createGlobalbarChart(){
   }
 // __________________________________________________________________________________
 
-
+if(navigator.onLine){
   // adding to HTML page
   totalGloballyConfirmed.insertAdjacentHTML('beforeend',totalGConfirmed)
   totalGloballyRecovered.insertAdjacentHTML('beforeend',totalGRecovered)
   totalGlobalDeath.insertAdjacentHTML('beforeend',totalGDeath)
   covidUpdates.insertAdjacentHTML('beforeend',covidInfo)
   lastUpdate.insertAdjacentHTML('beforeend',lastUpdateDate)
+} else { // this alert will show up if the user is offline 
+  alert('You are offline !!. Internet Connection is required to continue.');
+}
 
 }
 
